@@ -1,3 +1,26 @@
-/model/
-/module-info.class
-/test/
+# ==========================================
+# 1. Archivos compilados de Java (CRÍTICO)
+# ==========================================
+# Nunca se sube el código ya traducido por la máquina
+*.class
+bin/
+build/
+out/
+
+# ==========================================
+# 2. Configuración local y basura de Eclipse
+# ==========================================
+# No subir la configuración de tu entorno de trabajo
+.metadata/
+.recommenders/
+.settings/
+*.log
+
+# ==========================================
+# 3. Basura del Sistema Operativo
+# ==========================================
+# Archivos ocultos de Windows y Mac
+.DS_Store
+Thumbs.db
+ehthumbs.db
+$RECYCLE.BIN/
