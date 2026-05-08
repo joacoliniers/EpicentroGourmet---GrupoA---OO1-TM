@@ -1,5 +1,38 @@
 package model;
 
-public class Cajero {
+import java.time.LocalDate;
 
+public class Cajero extends Personal{
+	private String especialidad;
+	private Double plusFijo;
+	
+	public Cajero(String nombre, String apellido, long dni, LocalDate fechaNacimineto, LocalDate fechaIngreso,
+			Double sueldoBase, String especialidad, Double plusFijo) {
+		super(nombre, apellido, dni, fechaNacimineto, fechaIngreso, sueldoBase);
+		this.especialidad = especialidad;
+		this.plusFijo = plusFijo;
+	}
+
+	public String getEspecialidad() {
+		return especialidad;
+	}
+
+	public void setEspecialidad(String especialidad) {
+		this.especialidad = especialidad;
+	}
+
+	public Double getPlusFijo() {
+		return plusFijo;
+	}
+
+	public void setPlusFijo(Double plusFijo) {
+		this.plusFijo = plusFijo;
+	}
+
+	@Override
+	public String toString() {
+		return "Cajero [especialidad=" + especialidad + ", plusFijo=" + plusFijo + "]";
+	}
+	
+	
 }
