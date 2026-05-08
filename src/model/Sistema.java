@@ -50,6 +50,9 @@ public class Sistema {
 		return false;
 	}
 	// agregarUnidad
+	public boolean agregarUnidad(String nombre, Personal responsable, Double superficie, Long codigoUnicoUnidad) {
+		return false;
+	}
 	
 	// agregarPersonal
 	
