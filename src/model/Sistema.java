@@ -47,6 +47,9 @@ public class Sistema {
 	// agregarFestival
 	
 	// agregarUnidad
+	public boolean agregarUnidad(String nombre, Personal responsable, Double superficie, Long codigoUnicoUnidad) {
+		
+	}
 	
 	// agregarPersonal
 	
