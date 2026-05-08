@@ -42,5 +42,20 @@ public class Sistema {
 		return "Sistema [lstPersonal=" + lstPersonal + ", lstFestival=" + lstFestival + ", lstUnidades=" + lstUnidades
 				+ ", rendimientoEconomico=" + rendimientoEconomico + "]";
 	}
+	
+	
+	// agregarFestival
+	
+	// agregarUnidad
+	
+	// agregarPersonal
+	
+	// eliminarFestival
+	
+	// eliminarEntidad
+	
+	// busquedaPorAtributo
+	
+	
 
 }
