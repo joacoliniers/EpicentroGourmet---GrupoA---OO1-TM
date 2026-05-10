@@ -3,6 +3,8 @@ package model;
 import java.time.LocalDate;
 
 public class Personal {
+	
+	private int id;
 	private String nombre;
 	private String apellido;
 	private long dni;
@@ -10,9 +12,10 @@ public class Personal {
 	private LocalDate fechaIngreso;
 	private Double sueldoBase;
 	
-	public Personal(String nombre, String apellido, long dni, LocalDate fechaNacimineto, LocalDate fechaIngreso,
+	public Personal(int id, String nombre, String apellido, long dni, LocalDate fechaNacimineto, LocalDate fechaIngreso,
 			Double sueldoBase) {
 		super();
+		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
@@ -20,6 +23,19 @@ public class Personal {
 		this.fechaIngreso = fechaIngreso;
 		this.sueldoBase = sueldoBase;
 	}
+	
+
+	public int getId() {
+		return id;
+	}
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
 
 	public String getNombre() {
 		return nombre;

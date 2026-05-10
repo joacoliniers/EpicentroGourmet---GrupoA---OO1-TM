@@ -6,9 +6,9 @@ public class Cajero extends Personal{
 	private String especialidad;
 	private Double plusFijo;
 	
-	public Cajero(String nombre, String apellido, long dni, LocalDate fechaNacimineto, LocalDate fechaIngreso,
+	public Cajero(int id, String nombre, String apellido, long dni, LocalDate fechaNacimineto, LocalDate fechaIngreso,
 			Double sueldoBase, String especialidad, Double plusFijo) {
-		super(nombre, apellido, dni, fechaNacimineto, fechaIngreso, sueldoBase);
+		super(id, nombre, apellido, dni, fechaNacimineto, fechaIngreso, sueldoBase);
 		this.especialidad = especialidad;
 		this.plusFijo = plusFijo;
 	}
