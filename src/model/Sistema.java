@@ -89,7 +89,43 @@ public class Sistema {
 
 	// agregarUnidad
 	public boolean agregarUnidad(String nombre, Personal responsable, Double superficie, Long codigoUnicoUnidad) {
-		return false;
+		boolean agregado = false;
+		
+		if (busqPorAtributoUnicoUnidad(codigoUnicoUnidad) == null) {
+			UnidadDeVenta unidad = new UnidadDeVenta(nombre, responsable, superficie, codigoUnicoUnidad);
+			agregado = lstUnidades.add(unidad);
+		}
+		
+		return agregado;
+	}
+
+	// auditoriaPersonal
+	public List<Personal> auditoriaPersonal(int idFestival) {
+		List<Personal> personalAuditoria = new ArrayList<Personal>();
+		
+		Festival festival = busqPorAtributoUnicoFestival(idFestival);
+		
+		if (festival != null) {
+			for (UnidadDeVenta unidad : festival.getLstUnidadDeVentas()) {
+
+				//considera al responsable como parte del personal a auditar
+				if (unidad.getResponsable() != null && !personalAuditoria.contains(unidad.getResponsable())) {
+					personalAuditoria.add(unidad.getResponsable());
+				}
+				
+				for (Personal personal : unidad.getLstPersonal()) {
+					if (!personalAuditoria.contains(personal)) {
+						personalAuditoria.add(personal);
+					}
+				}
+			}
+		}
+		
+		return personalAuditoria;
+	}
+
+	// unidadesConMayorCanon TODO: implementar luego de calcularCanon 
+	public void unidadesConMayorCanon(int idFestival) {
 	}
 
 	// agregarPersonal
