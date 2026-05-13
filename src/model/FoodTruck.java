@@ -2,13 +2,14 @@ package model;
 
 import java.util.Objects;
 
-public class FoodTruck extends UnidadDeVenta{
-	
+public class FoodTruck extends UnidadDeVenta {
+
 	private String patente;
 	private boolean conexionElectrica;
-	
+
 	public FoodTruck(String nombre, Personal responsable, double superficie, long codigoUnico, String patente,
 			boolean conexionElectrica) {
+
 		super(nombre, responsable, superficie, codigoUnico);
 		this.patente = patente;
 		this.conexionElectrica = conexionElectrica;
@@ -56,7 +57,14 @@ public class FoodTruck extends UnidadDeVenta{
 	public String toString() {
 		return "FoodTruck [patente=" + patente + ", conexionElectrica=" + conexionElectrica + "]";
 	}
-	
-	
 
+//	Food Truck: (Superficie * $500) + $2000 si requiere conexión eléctrica.
+	@Override
+	public Double calculoCanon() {
+		double canon = this.getSuperficie() * 500;
+		if (this.conexionElectrica) {
+			canon += 2000;
+		}
+		return canon;
+	}
 }

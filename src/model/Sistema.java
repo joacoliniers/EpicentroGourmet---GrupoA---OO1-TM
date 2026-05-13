@@ -71,45 +71,61 @@ public class Sistema {
 	}
 
 	// agregarFestival
-	public boolean agregarFestival(String nombre, String temporada, LocalDate fechaInicio, LocalDate fechaFin){
+	public boolean agregarFestival(String nombre, String temporada, LocalDate fechaInicio, LocalDate fechaFin) {
 		boolean agregado = false;
-		
+
 		int id = 1;
 		if (!lstFestival.isEmpty()) {
 			id = lstFestival.get(lstFestival.size() - 1).getIdFestival() + 1;
 		}
-		
+
 		agregado = lstFestival.add(new Festival(id, nombre, temporada, fechaInicio, fechaFin));
 
 		return agregado;
 	}
 
-	// agregarUnidad
-	public boolean agregarUnidad(String nombre, Personal responsable, Double superficie, Long codigoUnicoUnidad) {
+	// agregarUnidadFoodTruck
+	public boolean agregarUnidadFoodTruck(String nombre, Personal responsable, Double superficie,
+			Long codigoUnicoUnidad, String patente, Boolean conexionElectrica) {
 		boolean agregado = false;
-		
+
 		if (busqPorAtributoUnicoUnidad(codigoUnicoUnidad) == null) {
-			UnidadDeVenta unidad = new UnidadDeVenta(nombre, responsable, superficie, codigoUnicoUnidad);
+			FoodTruck unidad = new FoodTruck(nombre, responsable, superficie, codigoUnicoUnidad, patente,
+					conexionElectrica);
 			agregado = lstUnidades.add(unidad);
 		}
-		
+
+		return agregado;
+	}
+
+	// agregarUnidadPuestoDesarmable
+	public boolean agregarUnidadPuestoDesarmable(String nombre, Personal responsable, Double superficie,
+			Long codigoUnicoUnidad, int cantCarpas, int tiempoMontaje) {
+		boolean agregado = false;
+
+		if (busqPorAtributoUnicoUnidad(codigoUnicoUnidad) == null) {
+			PuestoDesarmable unidad = new PuestoDesarmable(nombre, responsable, superficie, codigoUnicoUnidad,
+					cantCarpas, tiempoMontaje);
+			agregado = lstUnidades.add(unidad);
+		}
+
 		return agregado;
 	}
 
 	// auditoriaPersonal
 	public List<Personal> auditoriaPersonal(int idFestival) {
 		List<Personal> personalAuditoria = new ArrayList<Personal>();
-		
+
 		Festival festival = busqPorAtributoUnicoFestival(idFestival);
-		
+
 		if (festival != null) {
 			for (UnidadDeVenta unidad : festival.getLstUnidadDeVentas()) {
 
-				//considera al responsable como parte del personal a auditar
+				// considera al responsable como parte del personal a auditar
 				if (unidad.getResponsable() != null && !personalAuditoria.contains(unidad.getResponsable())) {
 					personalAuditoria.add(unidad.getResponsable());
 				}
-				
+
 				for (Personal personal : unidad.getLstPersonal()) {
 					if (!personalAuditoria.contains(personal)) {
 						personalAuditoria.add(personal);
@@ -117,11 +133,11 @@ public class Sistema {
 				}
 			}
 		}
-		
+
 		return personalAuditoria;
 	}
 
-	// unidadesConMayorCanon TODO: implementar luego de calcularCanon 
+	// unidadesConMayorCanon TODO: implementar luego de calcularCanon
 	public void unidadesConMayorCanon(int idFestival) {
 	}
 

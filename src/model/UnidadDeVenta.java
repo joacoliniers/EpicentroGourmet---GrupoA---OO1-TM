@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class UnidadDeVenta {
-	
+public abstract class UnidadDeVenta {
+
 	private String nombre;
 	private Personal responsable;
 	private double superficie;
 	private long codigoUnico;
-	private List<PlatosDelMenu>lstPlatos;
-	private List<Personal>lstPersonal;
-	private List<Pedido>lstPedidos;
-	
+	private List<PlatosDelMenu> lstPlatos;
+	private List<Personal> lstPersonal;
+	private List<Pedido> lstPedidos;
+
 	public UnidadDeVenta(String nombre, Personal responsable, double superficie, long codigoUnico) {
 		super();
 		this.nombre = nombre;
@@ -108,5 +108,7 @@ public class UnidadDeVenta {
 				+ ", lstPedidos=" + lstPedidos + "]";
 	}
 	
-	
+
+	public abstract Double calculoCanon();
+
 }

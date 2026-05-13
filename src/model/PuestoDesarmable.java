@@ -2,42 +2,33 @@ package model;
 
 import java.util.Objects;
 
-public class PuestoDesarmable extends UnidadDeVenta{
-	
+public class PuestoDesarmable extends UnidadDeVenta {
+
 	private int cantCarpas;
 	private int tiempoMontaje;
-	
+
 	public PuestoDesarmable(String nombre, Personal responsable, double superficie, long codigoUnico, int cantCarpas,
 			int tiempoMontaje) {
 		super(nombre, responsable, superficie, codigoUnico);
 		this.cantCarpas = cantCarpas;
 		this.tiempoMontaje = tiempoMontaje;
 	}
-	
 
 	public int getCantCarpas() {
 		return cantCarpas;
 	}
 
-
-
 	public void setCantCarpas(int cantCarpas) {
 		this.cantCarpas = cantCarpas;
 	}
-
-
 
 	public int getTiempoMontaje() {
 		return tiempoMontaje;
 	}
 
-
-
 	public void setTiempoMontaje(int tiempoMontaje) {
 		this.tiempoMontaje = tiempoMontaje;
 	}
-
-
 
 	@Override
 	public int hashCode() {
@@ -65,7 +56,12 @@ public class PuestoDesarmable extends UnidadDeVenta{
 	public String toString() {
 		return "PuestoDesarmable [cantCarpas=" + cantCarpas + ", tiempoMontaje=" + tiempoMontaje + "]";
 	}
-	
-	
+
+//	Puesto: (Superficie * $500) - (Tiempo de Montaje * $10).
+	@Override
+	public Double calculoCanon() {
+		double canon = (this.getSuperficie() * 500) - (this.tiempoMontaje * 10);
+		return canon;
+	}
 
 }
