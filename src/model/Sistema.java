@@ -189,7 +189,7 @@ public class Sistema {
 	}
 
 	public boolean agregarCajero(String nombre, String apellido, long dni, LocalDate fechaNacimiento,
-			LocalDate fechaIngreso, double sueldoBase, String especialidad, double plusFijo) {
+			LocalDate fechaIngreso, double sueldoBase, String turno) {
 
 		boolean retorno;
 
@@ -203,8 +203,7 @@ public class Sistema {
 				id = lstPersonal.getLast().getId() + 1;
 			}
 
-			Cocinero c = new Cocinero(id, nombre, apellido, dni, fechaNacimiento, fechaIngreso, sueldoBase,
-					especialidad, plusFijo);
+			Cajero c = new Cajero(id, nombre, apellido, dni, fechaNacimiento, fechaIngreso, sueldoBase,turno);
 			lstPersonal.add(c);
 			retorno = true;
 		}
