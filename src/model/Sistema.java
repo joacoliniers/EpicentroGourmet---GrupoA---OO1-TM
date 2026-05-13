@@ -71,17 +71,14 @@ public class Sistema {
 	}
 
 	// agregarFestival
-	public boolean agregarFestival(String nombre, String temporada, LocalDate fechaInicio, LocalDate fechaFin)
-			throws Exception {
+	public boolean agregarFestival(String nombre, String temporada, LocalDate fechaInicio, LocalDate fechaFin){
 		boolean agregado = false;
-		if (busqPorAtributoUnicoFestival(nombre) != null) {
-			throw new Exception("ERROR: Ya existe un festival registrado con el nombre" + nombre);
-		}
 		
 		int id = 1;
 		if (!lstFestival.isEmpty()) {
 			id = lstFestival.get(lstFestival.size() - 1).getIdFestival() + 1;
 		}
+		
 		agregado = lstFestival.add(new Festival(id, nombre, temporada, fechaInicio, fechaFin));
 
 		return agregado;
@@ -250,17 +247,4 @@ public class Sistema {
 		}
 		return festivalABuscar;
 	}
-
-	public Festival busqPorAtributoUnicoFestival(String nombre) {
-		Festival festivalABuscar = null;
-		int i = 0;
-		while (i < lstFestival.size() && festivalABuscar == null) {
-			if (lstFestival.get(i).getNombre().equalsIgnoreCase(nombre)) {
-				festivalABuscar = lstFestival.get(i);
-			}
-			i++;
-		}
-		return festivalABuscar;
-	}
-
 }
