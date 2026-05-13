@@ -2,37 +2,26 @@ package model;
 
 import java.time.LocalDate;
 
-public class Cajero extends Personal{
-	private String especialidad;
-	private Double plusFijo;
-	
-	public Cajero(int id, String nombre, String apellido, long dni, LocalDate fechaNacimineto, LocalDate fechaIngreso,
-			Double sueldoBase, String especialidad, Double plusFijo) {
-		super(id, nombre, apellido, dni, fechaNacimineto, fechaIngreso, sueldoBase);
-		this.especialidad = especialidad;
-		this.plusFijo = plusFijo;
+public class Cajero extends Personal {
+
+	private String turno;
+
+	public Cajero(int id, String nombre, String apellido, long dni, LocalDate fechaNacimiento, LocalDate fechaIngreso,
+			Double sueldoBase, String turno) {
+		super(id, nombre, apellido, dni, fechaNacimiento, fechaIngreso, sueldoBase);
+		this.turno = turno;
 	}
 
-	public String getEspecialidad() {
-		return especialidad;
+	public String getTurno() {
+		return turno;
 	}
 
-	public void setEspecialidad(String especialidad) {
-		this.especialidad = especialidad;
-	}
-
-	public Double getPlusFijo() {
-		return plusFijo;
-	}
-
-	public void setPlusFijo(Double plusFijo) {
-		this.plusFijo = plusFijo;
+	public void setTurno(String turno) {
+		this.turno = turno;
 	}
 
 	@Override
 	public String toString() {
-		return "Cajero [especialidad=" + especialidad + ", plusFijo=" + plusFijo + "]";
+		return "Cajero [turno=" + turno + "]";
 	}
-	
-	
 }

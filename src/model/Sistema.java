@@ -145,39 +145,68 @@ public class Sistema {
 	public boolean agregarPersonal(String nombre, String apellido, long dni, LocalDate fechaNacimiento,
 			LocalDate fechaIngreso, double sueldoBase) {
 
-		boolean retorno = false;
+		boolean retorno = true;
 
-		if (lstPersonal.isEmpty()) {
+		if (this.busqPorAtributoUnicoPersonal(dni) != null) {
+			retorno = false; //
+		} else {
 
 			int id = 1;
+			if (!lstPersonal.isEmpty()) {
+				id = lstPersonal.getLast().getId() + 1;
+			}
 
 			Personal p = new Personal(id, nombre, apellido, dni, fechaNacimiento, fechaIngreso, sueldoBase);
 			lstPersonal.add(p);
 			retorno = true;
+		}
+
+		return retorno;
+	}
+
+	public boolean agregarCocinero(String nombre, String apellido, long dni, LocalDate fechaNacimiento,
+			LocalDate fechaIngreso, double sueldoBase, String especialidad, double plusFijo) {
+
+		boolean retorno;
+
+		if (this.busqPorAtributoUnicoPersonal(dni) != null) {
+			retorno = false;
+
 		} else {
 
-			int i = 0;
-			boolean encontrado = false;
-
-			while (i < lstPersonal.size() && !encontrado) {
-
-				if (this.busqPorAtributoUnicoPersonal(dni) != null) {
-
-					encontrado = true;
-				} else {
-
-					i++;
-				}
+			int id = 1;
+			if (!lstPersonal.isEmpty()) {
+				id = lstPersonal.getLast().getId() + 1;
 			}
 
-			if (!encontrado) {
+			Cocinero c = new Cocinero(id, nombre, apellido, dni, fechaNacimiento, fechaIngreso, sueldoBase,
+					especialidad, plusFijo);
+			lstPersonal.add(c);
+			retorno = true;
+		}
 
-				int id = lstPersonal.getLast().getId();
+		return retorno;
+	}
 
-				Personal p = new Personal(id + 1, nombre, apellido, dni, fechaNacimiento, fechaIngreso, sueldoBase);
-				lstPersonal.add(p);
-				retorno = true;
+	public boolean agregarCajero(String nombre, String apellido, long dni, LocalDate fechaNacimiento,
+			LocalDate fechaIngreso, double sueldoBase, String especialidad, double plusFijo) {
+
+		boolean retorno;
+
+		if (this.busqPorAtributoUnicoPersonal(dni) != null) {
+			retorno = false;
+
+		} else {
+
+			int id = 1;
+			if (!lstPersonal.isEmpty()) {
+				id = lstPersonal.getLast().getId() + 1;
 			}
+
+			Cocinero c = new Cocinero(id, nombre, apellido, dni, fechaNacimiento, fechaIngreso, sueldoBase,
+					especialidad, plusFijo);
+			lstPersonal.add(c);
+			retorno = true;
 		}
 
 		return retorno;

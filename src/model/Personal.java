@@ -9,18 +9,18 @@ public class Personal {
 	private String nombre;
 	private String apellido;
 	private long dni;
-	private LocalDate fechaNacimineto;
+	private LocalDate fechaNacimiento;
 	private LocalDate fechaIngreso;
 	private Double sueldoBase;
 	
-	public Personal(int id, String nombre, String apellido, long dni, LocalDate fechaNacimineto, LocalDate fechaIngreso,
+	public Personal(int id, String nombre, String apellido, long dni, LocalDate fechaNacimiento, LocalDate fechaIngreso,
 			Double sueldoBase) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
-		this.fechaNacimineto = fechaNacimineto;
+		this.fechaNacimiento = fechaNacimiento;
 		this.fechaIngreso = fechaIngreso;
 		this.sueldoBase = sueldoBase;
 	}
@@ -58,12 +58,12 @@ public class Personal {
 		this.dni = dni;
 	}
 
-	public LocalDate getFechaNacimineto() {
-		return fechaNacimineto;
+	public LocalDate getFechaNacimiento() {
+		return fechaNacimiento;
 	}
 
-	public void setFechaNacimineto(LocalDate fechaNacimineto) {
-		this.fechaNacimineto = fechaNacimineto;
+	public void setFechaNacimiento(LocalDate fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
 	}
 
 	public LocalDate getFechaIngreso() {
@@ -84,7 +84,7 @@ public class Personal {
 
 	@Override
 	public String toString() {
-		return "Personal [nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", fechaNacimineto="
-				+ fechaNacimineto + ", fechaIngreso=" + fechaIngreso + ", sueldoBase=" + sueldoBase + "]";
+		return "Personal [nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", fechaNacimiento="
+				+ fechaNacimiento + ", fechaIngreso=" + fechaIngreso + ", sueldoBase=" + sueldoBase + "]";
 	}
 }
