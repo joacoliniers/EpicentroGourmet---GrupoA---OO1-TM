@@ -27,6 +27,12 @@ public class SistemaTest {
 			
 			List<Personal> personalAuditoria = sistema.auditoriaPersonal(1);
 			System.out.println("Personal auditado en " + sistema.getLstFestival().get(0).getNombre() + ": " + personalAuditoria);
+			
+			// eliminar personal lucas
+			System.out.println(sistema.eliminarEntidad(sistema.busqPorAtributoUnicoPersonal(11111111)));
+			
+			
+			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

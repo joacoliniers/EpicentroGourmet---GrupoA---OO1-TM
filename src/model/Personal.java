@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Personal {
 	
@@ -29,13 +30,9 @@ public class Personal {
 		return id;
 	}
 
-
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
-
 
 	public String getNombre() {
 		return nombre;
@@ -90,5 +87,4 @@ public class Personal {
 		return "Personal [nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", fechaNacimineto="
 				+ fechaNacimineto + ", fechaIngreso=" + fechaIngreso + ", sueldoBase=" + sueldoBase + "]";
 	}
-
 }
