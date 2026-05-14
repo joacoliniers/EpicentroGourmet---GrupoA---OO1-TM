@@ -137,8 +137,26 @@ public class Sistema {
 		return personalAuditoria;
 	}
 
-	// unidadesConMayorCanon TODO: implementar luego de calcularCanon
-	public void unidadesConMayorCanon(int idFestival) {
+	// unidadesConMayorCanon
+	public ReporteMayoresCanon unidadesConMayorCanon(int idFestival) {
+		ReporteMayoresCanon reporte = new ReporteMayoresCanon(null);
+		Festival festival = this.busqPorAtributoUnicoFestival(idFestival);
+
+		if (festival != null && !festival.getLstUnidadDeVentas().isEmpty()) {
+			List<UnidadDeVenta> unidadesOrdenadas = new ArrayList<>(festival.getLstUnidadDeVentas());
+			
+			unidadesOrdenadas.sort((u1, u2) -> Double.compare(u2.calculoCanon(), u1.calculoCanon()));
+			
+			for (int i = 0; i < Math.min(3, unidadesOrdenadas.size()); i++) {
+				reporte.getLstMasGastaron().add(unidadesOrdenadas.get(i));
+			}
+			
+			if (!reporte.getLstMasGastaron().isEmpty()) {
+				reporte.setUnidadesConMayorCanon(reporte.getLstMasGastaron().get(0));
+			}
+		}
+
+		return reporte;
 	}
 
 	// agregarPersonal

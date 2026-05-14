@@ -5,6 +5,7 @@ import java.util.List;
 
 import model.Festival;
 import model.Personal;
+import model.ReporteMayoresCanon;
 import model.Sistema;
 import model.UnidadDeVenta;
 
@@ -33,7 +34,20 @@ public class SistemaTest {
 
 			List<Personal> personalAuditoria = sistema.auditoriaPersonal(1);
 			System.out.println("\nPersonal auditado en " + sistema.getLstFestival().get(0).getNombre() + ":\n "
-					+ "	" + personalAuditoria);
+					+ "\t" + personalAuditoria);
+
+			// test de unidadesConMayorCanon
+			sistema.agregarUnidadFoodTruck("Food Truck C", responsable, 55.0, 1003L, "CD300XX", false);
+			sistema.agregarUnidadPuestoDesarmable("Food Truck D", responsable, 48.0, 1004L, 2, 50);
+
+			festival.getLstUnidadDeVentas().add(sistema.busqPorAtributoUnicoUnidad(1003L));
+			festival.getLstUnidadDeVentas().add(sistema.busqPorAtributoUnicoUnidad(1004L));
+
+			ReporteMayoresCanon reporte = sistema.unidadesConMayorCanon(1);
+			System.out.println("\nUnidades con mayor canon (mayor a menor):");
+			for (UnidadDeVenta u : reporte.getLstMasGastaron()) {
+				System.out.println("\t" + u.getNombre() + " - Canon: $" + u.calculoCanon());
+			}
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
