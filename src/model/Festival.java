@@ -11,15 +11,17 @@ public class Festival {
 	private String temporada;
 	private LocalDate fechaInicio;
 	private LocalDate fechaFin;
+	private Costo costosFestival;
 	private List<UnidadDeVenta> lstUnidadDeVentas;
 
-	public Festival(int idFestival, String nombre, String temporada, LocalDate fechaInicio, LocalDate fechaFin) {
+	public Festival(int idFestival, String nombre, String temporada, LocalDate fechaInicio, LocalDate fechaFin, Costo costosFestival) {
 		super();
 		this.idFestival = idFestival;
 		this.nombre = nombre;
 		this.temporada = temporada;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
+		this.costosFestival = costosFestival;
 		this.lstUnidadDeVentas = new ArrayList<UnidadDeVenta>();
 	}
 

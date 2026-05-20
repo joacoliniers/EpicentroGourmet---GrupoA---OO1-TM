@@ -71,7 +71,7 @@ public class Sistema {
 	}
 
 	// agregarFestival
-	public boolean agregarFestival(String nombre, String temporada, LocalDate fechaInicio, LocalDate fechaFin) {
+	public boolean agregarFestival(String nombre, String temporada, LocalDate fechaInicio, LocalDate fechaFin, Costo costosFestival) {
 		boolean agregado = false;
 
 		int id = 1;
@@ -79,7 +79,7 @@ public class Sistema {
 			id = lstFestival.get(lstFestival.size() - 1).getIdFestival() + 1;
 		}
 
-		agregado = lstFestival.add(new Festival(id, nombre, temporada, fechaInicio, fechaFin));
+		agregado = lstFestival.add(new Festival(id, nombre, temporada, fechaInicio, fechaFin, costosFestival));
 
 		return agregado;
 	}
@@ -160,28 +160,6 @@ public class Sistema {
 	}
 
 	// agregarPersonal
-	public boolean agregarPersonal(String nombre, String apellido, long dni, LocalDate fechaNacimiento,
-			LocalDate fechaIngreso, double sueldoBase) {
-
-		boolean retorno = true;
-
-		if (this.busqPorAtributoUnicoPersonal(dni) != null) {
-			retorno = false; //
-		} else {
-
-			int id = 1;
-			if (!lstPersonal.isEmpty()) {
-				id = lstPersonal.getLast().getId() + 1;
-			}
-
-			Personal p = new Personal(id, nombre, apellido, dni, fechaNacimiento, fechaIngreso, sueldoBase);
-			lstPersonal.add(p);
-			retorno = true;
-		}
-
-		return retorno;
-	}
-
 	public boolean agregarCocinero(String nombre, String apellido, long dni, LocalDate fechaNacimiento,
 			LocalDate fechaIngreso, double sueldoBase, String especialidad, double plusFijo) {
 

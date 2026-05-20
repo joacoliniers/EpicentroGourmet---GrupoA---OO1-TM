@@ -3,7 +3,7 @@ package model;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Personal {
+public abstract class Personal {
 	
 	private int id;
 	private String nombre;

@@ -7,14 +7,12 @@ public class Costo {
 	private double costoSuperficie;
 	private double costoMontaje;
 	private double plusElectricidad;
-	private double sueldoBase;
 	
-	public Costo(double costoSuperficie, double costoMontaje, double plusElectricidad, double sueldoBase) {
+	public Costo(double costoSuperficie, double costoMontaje, double plusElectricidad) {
 		super();
 		this.costoSuperficie = costoSuperficie;
 		this.costoMontaje = costoMontaje;
 		this.plusElectricidad = plusElectricidad;
-		this.sueldoBase = sueldoBase;
 	}
 	
 	
