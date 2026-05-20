@@ -68,12 +68,40 @@ public class Festival {
 	public List<UnidadDeVenta> getLstUnidadDeVentas() {
 		return lstUnidadDeVentas;
 	}
+	
+	public Costo getCostosFestival() {
+		return costosFestival;
+	}
 
 	@Override
 	public String toString() {
 		return "Festival [idFestival=" + idFestival + ", nombre=" + nombre + ", temporada=" + temporada
 				+ ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", lstUnidadDeVentas=" + lstUnidadDeVentas
 				+ "]";
+	}
+	
+	
+	public Double calculoCanon(UnidadDeVenta u) throws Exception{
+		
+		if(u == null) {
+			throw new Exception("ERROR: Unidad de venta no encontrada");
+		}
+		
+		double canon = 0;
+		if(u instanceof FoodTruck) {
+			FoodTruck f = (FoodTruck) u;
+			double costoConexion = 0;
+			
+			if(f.isConexionElectrica()) {
+				costoConexion = this.costosFestival.getPlusElectricidad();
+			}
+			canon = (u.getSuperficie() * this.costosFestival.getCostoMontaje() + costoConexion);
+					
+		} else {
+			PuestoDesarmable p = (PuestoDesarmable) u;
+			canon = (u.getSuperficie() * this.costosFestival.getCostoSuperficie()) - (p.getTiempoMontaje() * this.costosFestival.getCostoMontaje());
+		}
+		return canon;
 	}
 
 }

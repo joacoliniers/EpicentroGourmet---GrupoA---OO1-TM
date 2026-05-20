@@ -3,6 +3,7 @@ package test;
 import java.time.LocalDate;
 import java.util.List;
 
+import model.Costo;
 import model.Festival;
 import model.Personal;
 import model.ReporteMayoresCanon;
@@ -14,10 +15,11 @@ public class SistemaTest {
 	public static void main(String[] args) {
 
 		Sistema sistema = new Sistema(200.0);
+		Costo costos = new Costo(500.0, 10.0, 2000.0);
+		
 		try {
-			sistema.agregarFestival("Lollapalooza", "2026", LocalDate.of(2026, 3, 12), LocalDate.of(2026, 3, 14));
-			sistema.agregarPersonal("Lucas", "Murakoshi", 11111111, LocalDate.of(2004, 4, 20),
-					LocalDate.of(2017, 10, 1), 100000000d);
+			sistema.agregarFestival("Lollapalooza", "2026", LocalDate.of(2026, 3, 12), LocalDate.of(2026, 3, 14), costos);
+			
 
 			Personal responsable = sistema.getLstPersonal().get(0);
 			sistema.agregarUnidadFoodTruck("Food Truck A", responsable, 50.0, 1001L, "AB200XX", true);
@@ -36,10 +38,12 @@ public class SistemaTest {
 			System.out.println("\nPersonal auditado en " + sistema.getLstFestival().get(0).getNombre() + ":\n "
 					+ "\t" + personalAuditoria);
 
-			// test de unidadesConMayorCanon
+//			// test de unidadesConMayorCanon
 			sistema.agregarUnidadFoodTruck("Food Truck C", responsable, 55.0, 1003L, "CD300XX", false);
 			sistema.agregarUnidadPuestoDesarmable("Food Truck D", responsable, 48.0, 1004L, 2, 50);
-
+			
+			sistema.busqPorAtributoUnicoFestival(11111111).calculoCanon(sistema.busqPorAtributoUnicoUnidad(1003L));
+		
 			festival.getLstUnidadDeVentas().add(sistema.busqPorAtributoUnicoUnidad(1003L));
 			festival.getLstUnidadDeVentas().add(sistema.busqPorAtributoUnicoUnidad(1004L));
 

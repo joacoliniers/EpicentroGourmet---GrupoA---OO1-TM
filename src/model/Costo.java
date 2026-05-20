@@ -14,20 +14,14 @@ public class Costo {
 		this.costoMontaje = costoMontaje;
 		this.plusElectricidad = plusElectricidad;
 	}
-	
-	
 
 	public double getCostoSuperficie() {
 		return costoSuperficie;
 	}
 
-
-
 	public void setCostoSuperficie(double costoSuperficie) {
 		this.costoSuperficie = costoSuperficie;
 	}
-
-
 
 	public double getCostoMontaje() {
 		return costoMontaje;
@@ -39,35 +33,17 @@ public class Costo {
 		this.costoMontaje = costoMontaje;
 	}
 
-
-
 	public double getPlusElectricidad() {
 		return plusElectricidad;
 	}
-
-
 
 	public void setPlusElectricidad(double plusElectricidad) {
 		this.plusElectricidad = plusElectricidad;
 	}
 
-
-
-	public double getSueldoBase() {
-		return sueldoBase;
-	}
-
-
-
-	public void setSueldoBase(double sueldoBase) {
-		this.sueldoBase = sueldoBase;
-	}
-
-
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(costoMontaje, costoSuperficie, plusElectricidad, sueldoBase);
+		return Objects.hash(costoMontaje, costoSuperficie, plusElectricidad);
 	}
 
 	@Override
@@ -81,18 +57,13 @@ public class Costo {
 		Costo other = (Costo) obj;
 		return Double.doubleToLongBits(costoMontaje) == Double.doubleToLongBits(other.costoMontaje)
 				&& Double.doubleToLongBits(costoSuperficie) == Double.doubleToLongBits(other.costoSuperficie)
-				&& Double.doubleToLongBits(plusElectricidad) == Double.doubleToLongBits(other.plusElectricidad)
-				&& Double.doubleToLongBits(sueldoBase) == Double.doubleToLongBits(other.sueldoBase);
+				&& Double.doubleToLongBits(plusElectricidad) == Double.doubleToLongBits(other.plusElectricidad);
 	}
-
 
 
 	@Override
 	public String toString() {
 		return "Costo [costoSuperficie=" + costoSuperficie + ", costoMontaje=" + costoMontaje + ", plusElectricidad="
-				+ plusElectricidad + ", sueldoBase=" + sueldoBase + "]";
+				+ plusElectricidad + "]";
 	}
-	
-	
-
 }

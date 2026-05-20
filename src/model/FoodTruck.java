@@ -57,14 +57,4 @@ public class FoodTruck extends UnidadDeVenta {
 	public String toString() {
 		return "FoodTruck [patente=" + patente + ", conexionElectrica=" + conexionElectrica + "]";
 	}
-
-//	Food Truck: (Superficie * $500) + $2000 si requiere conexión eléctrica.
-	@Override
-	public Double calculoCanon() {
-		double canon = this.getSuperficie() * 500;
-		if (this.conexionElectrica) {
-			canon += 2000;
-		}
-		return canon;
-	}
 }

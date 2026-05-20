@@ -109,6 +109,4 @@ public abstract class UnidadDeVenta {
 	}
 	
 
-	public abstract Double calculoCanon();
-
 }

@@ -57,11 +57,5 @@ public class PuestoDesarmable extends UnidadDeVenta {
 		return "PuestoDesarmable [cantCarpas=" + cantCarpas + ", tiempoMontaje=" + tiempoMontaje + "]";
 	}
 
-//	Puesto: (Superficie * $500) - (Tiempo de Montaje * $10).
-	@Override
-	public Double calculoCanon() {
-		double canon = (this.getSuperficie() * 500) - (this.tiempoMontaje * 10);
-		return canon;
-	}
 
 }

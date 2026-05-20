@@ -237,13 +237,11 @@ public class Sistema {
 
 					u = lstUnidades.get(i);
 					encontrado = true;
-
 				} else {
 
 					i++;
 				}
 			}
-
 		}
 
 		return u;
