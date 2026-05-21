@@ -144,13 +144,19 @@ public class Sistema {
 
 		if (festival != null && !festival.getLstUnidadDeVentas().isEmpty()) {
 			List<UnidadDeVenta> unidadesOrdenadas = new ArrayList<>(festival.getLstUnidadDeVentas());
-			
-			unidadesOrdenadas.sort((u1, u2) -> Double.compare(u2.calculoCanon(), u1.calculoCanon()));
-			
+			unidadesOrdenadas.sort((u1, u2) -> {
+				try {
+					double c1 = festival.calculoCanon(u1);
+					double c2 = festival.calculoCanon(u2);
+					return Double.compare(c2, c1);
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+					return 0;
+				}
+			});
 			for (int i = 0; i < Math.min(3, unidadesOrdenadas.size()); i++) {
 				reporte.getLstMasGastaron().add(unidadesOrdenadas.get(i));
 			}
-			
 			if (!reporte.getLstMasGastaron().isEmpty()) {
 				reporte.setUnidadesConMayorCanon(reporte.getLstMasGastaron().get(0));
 			}

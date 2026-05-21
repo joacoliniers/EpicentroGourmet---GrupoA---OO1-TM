@@ -19,8 +19,7 @@ public class SistemaTest {
 		
 		try {
 			sistema.agregarFestival("Lollapalooza", "2026", LocalDate.of(2026, 3, 12), LocalDate.of(2026, 3, 14), costos);
-			
-
+			sistema.agregarCocinero("Juan", "Perez", 12345678L, LocalDate.of(1990, 1, 1), LocalDate.of(2020, 1, 1), 50000.0, "Italiana", 2000.0);
 			Personal responsable = sistema.getLstPersonal().get(0);
 			sistema.agregarUnidadFoodTruck("Food Truck A", responsable, 50.0, 1001L, "AB200XX", true);
 			sistema.agregarUnidadPuestoDesarmable("Food Truck B", responsable, 60.0, 1002L, 3, 90);
@@ -42,15 +41,14 @@ public class SistemaTest {
 			sistema.agregarUnidadFoodTruck("Food Truck C", responsable, 55.0, 1003L, "CD300XX", false);
 			sistema.agregarUnidadPuestoDesarmable("Food Truck D", responsable, 48.0, 1004L, 2, 50);
 			
-			sistema.busqPorAtributoUnicoFestival(11111111).calculoCanon(sistema.busqPorAtributoUnicoUnidad(1003L));
-		
 			festival.getLstUnidadDeVentas().add(sistema.busqPorAtributoUnicoUnidad(1003L));
 			festival.getLstUnidadDeVentas().add(sistema.busqPorAtributoUnicoUnidad(1004L));
 
 			ReporteMayoresCanon reporte = sistema.unidadesConMayorCanon(1);
 			System.out.println("\nUnidades con mayor canon (mayor a menor):");
 			for (UnidadDeVenta u : reporte.getLstMasGastaron()) {
-				System.out.println("\t" + u.getNombre() + " - Canon: $" + u.calculoCanon());
+				double canon = festival.calculoCanon(u);
+				System.out.println("\t" + u.getNombre() + " - Canon: $" + canon);
 			}
 
 		} catch (Exception e) {
