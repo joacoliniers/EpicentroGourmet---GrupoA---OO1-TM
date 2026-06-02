@@ -3,7 +3,6 @@ package model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Festival {
 	private int idFestival;
@@ -102,6 +101,18 @@ public class Festival {
 			canon = (u.getSuperficie() * this.costosFestival.getCostoSuperficie()) - (p.getTiempoMontaje() * this.costosFestival.getCostoMontaje());
 		}
 		return canon;
+	}
+	
+	public UnidadDeVenta busqUnidadDeVentaPorId(long codigoUnicoUnidad) {
+		UnidadDeVenta unidadBuscada = null;
+		int i = 0;
+		while (i < lstUnidadDeVentas.size() && unidadBuscada == null) {
+			if (lstUnidadDeVentas.get(i).getCodigoUnico() == codigoUnicoUnidad) {
+				unidadBuscada = lstUnidadDeVentas.get(i);
+			}
+			i++;
+		}
+		return unidadBuscada;
 	}
 
 }

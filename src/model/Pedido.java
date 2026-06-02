@@ -1,20 +1,25 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Pedido {
 	private LocalDate fechaTransacccion;
-	private Festival idFestival;
-	private UnidadDeVenta codigoUnicoUnidad;
-	private Long codigoPedido;
+	private Festival festival;
+	private UnidadDeVenta unidadDeVenta;
+	private long codigoPedido;
 
-	public Pedido(LocalDate fechaTransacccion, Festival idFestival, UnidadDeVenta codigoUnicoUnidad,
-			Long codigoPedido) {
+	private List<DetallePedido> lstDetallePedido;
+
+	public Pedido(LocalDate fechaTransacccion, Festival festival, UnidadDeVenta unidadDeVenta, Long codigoPedido) {
 		super();
 		this.fechaTransacccion = fechaTransacccion;
-		this.idFestival = idFestival;
-		this.codigoUnicoUnidad = codigoUnicoUnidad;
+		this.festival = festival;
+		this.unidadDeVenta = unidadDeVenta;
 		this.codigoPedido = codigoPedido;
+
+		this.lstDetallePedido = new ArrayList<DetallePedido>();
 	}
 
 	public LocalDate getFechaTransacccion() {
@@ -25,20 +30,20 @@ public class Pedido {
 		this.fechaTransacccion = fechaTransacccion;
 	}
 
-	public Festival getIdFestival() {
-		return idFestival ;
+	public Festival getFestival() {
+		return festival;
 	}
 
-	public void setIdFestival(Festival idFestival) {
-		this.idFestival = idFestival;
+	public void setIdFestival(Festival festival) {
+		this.festival = festival;
 	}
 
-	public UnidadDeVenta getCodigoUnicoUnidad() {
-		return codigoUnicoUnidad;
+	public UnidadDeVenta getUnicoUnidad() {
+		return unidadDeVenta;
 	}
 
 	public void setCodigoUnicoUnidad(UnidadDeVenta codigoUnicoUnidad) {
-		this.codigoUnicoUnidad = codigoUnicoUnidad;
+		this.unidadDeVenta = codigoUnicoUnidad;
 	}
 
 	public Long getCodigoPedido() {
@@ -51,8 +56,19 @@ public class Pedido {
 
 	@Override
 	public String toString() {
-		return "Pedido [fechaTransacccion=" + fechaTransacccion + ", idFestival=" + idFestival + ", codigoUnicoUnidad="
-				+ codigoUnicoUnidad + ", codigoPedido=" + codigoPedido + "]";
+		return "Pedido codigoPedido=" + codigoPedido + " [fechaTransacccion=" + fechaTransacccion + ", festival="
+				+ festival.getNombre() + " " + festival.getTemporada() + ", codigoUnicoUnidad="
+				+ unidadDeVenta.getCodigoUnico() + " detalle= " + lstDetallePedido+ "]";
 	}
 
+	public boolean agregarDetallePedido(PlatosDelMenu plato, int cantidad) {
+		int idItem = 1;
+
+		if (!this.lstDetallePedido.isEmpty()) {
+			idItem = this.lstDetallePedido.getLast().getIdItem() + 1;
+		}
+
+		DetallePedido nuevoDetalle = new DetallePedido(idItem, plato, cantidad);
+		return this.lstDetallePedido.add(nuevoDetalle);
+	}
 }

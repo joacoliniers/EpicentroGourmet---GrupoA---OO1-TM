@@ -5,6 +5,7 @@ import java.util.List;
 
 import model.Costo;
 import model.Festival;
+import model.Pedido;
 import model.Personal;
 import model.ReporteMayoresCanon;
 import model.Sistema;
@@ -54,7 +55,22 @@ public class SistemaTest {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+		
+		System.out.println("");
+		sistema.busqPorAtributoUnicoUnidad(1001).agregarPlatoDelMenu("Hamburguesa Completa", 12000.0, 5500.0);
+		sistema.busqPorAtributoUnicoUnidad(1001).agregarPlatoDelMenu("Super Pancho", 12000.0, 5500.0);
+		
+		
+		sistema.abrirPedido(1, 1001);
+		sistema.agregarItemAPedido(1, 1001, 1L, "HambUrguesa CoMPleta", 2);
+		sistema.agregarItemAPedido(1, 1001, 1L, "super pancho", 2);
+		
+		sistema.abrirPedido(1, 1001);
+		sistema.agregarItemAPedido(1, 1001, 2L, "super pancho", 5);
 
+		for(Pedido p : sistema.busqPorAtributoUnicoUnidad(1001).getLstPedidos()) {
+			System.out.println(p);
+		}
 	}
 
 }

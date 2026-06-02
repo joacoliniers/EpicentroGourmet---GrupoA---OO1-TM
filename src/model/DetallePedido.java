@@ -40,5 +40,4 @@ public class DetallePedido {
 	public String toString() {
 		return "DetallePedido [idItem=" + idItem + ", plato=" + plato + ", cantidad=" + cantidad + "]";
 	}
-
 }

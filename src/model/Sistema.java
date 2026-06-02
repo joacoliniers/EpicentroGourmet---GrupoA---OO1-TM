@@ -71,7 +71,8 @@ public class Sistema {
 	}
 
 	// agregarFestival
-	public boolean agregarFestival(String nombre, String temporada, LocalDate fechaInicio, LocalDate fechaFin, Costo costosFestival) {
+	public boolean agregarFestival(String nombre, String temporada, LocalDate fechaInicio, LocalDate fechaFin,
+			Costo costosFestival) {
 		boolean agregado = false;
 
 		int id = 1;
@@ -205,7 +206,7 @@ public class Sistema {
 				id = lstPersonal.getLast().getId() + 1;
 			}
 
-			Cajero c = new Cajero(id, nombre, apellido, dni, fechaNacimiento, fechaIngreso, sueldoBase,turno);
+			Cajero c = new Cajero(id, nombre, apellido, dni, fechaNacimiento, fechaIngreso, sueldoBase, turno);
 			lstPersonal.add(c);
 			retorno = true;
 		}
@@ -291,4 +292,38 @@ public class Sistema {
 		}
 		return festivalABuscar;
 	}
+
+	public boolean abrirPedido(int idFestival, long codUnidad) {
+		boolean bandera = false;
+
+		Festival festival = busqPorAtributoUnicoFestival(idFestival);
+		UnidadDeVenta unidad = festival.busqUnidadDeVentaPorId(codUnidad);
+
+		if (unidad == null || festival == null) {
+			bandera = false;
+		} else {
+			unidad.agregarPedido(LocalDate.now(), festival);
+			bandera = true;
+		}
+
+		return bandera;
+	}
+
+	public boolean agregarItemAPedido(int idFestival, long codigoUnicoUnidad, long codPedido, String nombrePlato,
+			int cantidad) {
+		boolean bandera = false;
+
+		Festival festival = busqPorAtributoUnicoFestival(idFestival);
+		UnidadDeVenta unidad = festival.busqUnidadDeVentaPorId(codigoUnicoUnidad);
+
+		Pedido pedidoExistente = unidad.traerPedido(codPedido);
+		PlatosDelMenu platoPedido = unidad.traerPlato(nombrePlato);
+		
+		if(pedidoExistente != null || platoPedido != null) {
+			bandera = pedidoExistente.agregarDetallePedido(platoPedido, cantidad);
+		} 
+		
+		return bandera;
+	}
+
 }

@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -100,13 +101,51 @@ public abstract class UnidadDeVenta {
 				&& Objects.equals(nombre, other.nombre) && Objects.equals(responsable, other.responsable)
 				&& Double.doubleToLongBits(superficie) == Double.doubleToLongBits(other.superficie);
 	}
+	
+	public Pedido agregarPedido(LocalDate fecha, Festival festival) {
+		long codPedido = 1;
 
-	@Override
-	public String toString() {
-		return "UnidadDeVenta [nombre=" + nombre + ", responsable=" + responsable + ", superficie=" + superficie
-				+ ", codigoUnico=" + codigoUnico + ", lstPlatos=" + lstPlatos + ", lstPersonal=" + lstPersonal
-				+ ", lstPedidos=" + lstPedidos + "]";
+		if (!this.lstPedidos.isEmpty()) {
+			codPedido = this.lstPedidos.getLast().getCodigoPedido() + 1;
+		}
+		
+		Pedido nuevoPedido = new Pedido(fecha, festival, this, codPedido);
+		this.lstPedidos.add(nuevoPedido);
+		return nuevoPedido;
 	}
 	
-
+	public PlatosDelMenu traerPlato(String nombre) {
+		
+		PlatosDelMenu plato = null;
+		for(PlatosDelMenu p : this.lstPlatos) {
+			if(p.getNombre().equalsIgnoreCase(nombre)) {
+				plato = p;
+			}
+		}
+		
+		return plato;
+	}
+	
+	public boolean agregarPlatoDelMenu(String nombre, Double precio, Double costoProduccion) {
+		boolean bandera = false;
+		
+		if(this.traerPlato(nombre) == null) {
+			PlatosDelMenu nuevoPlato = new PlatosDelMenu(nombre, precio, costoProduccion);
+			bandera = this.lstPlatos.add(nuevoPlato);
+			
+		}
+		
+		return bandera;
+	}
+	
+	public Pedido traerPedido(long codPedido) {
+		Pedido pedido = null;
+		for(Pedido p : this.lstPedidos) {
+			if(p.getCodigoPedido() == codPedido) {
+				pedido = p;
+			}
+		}
+		
+		return pedido;
+	}
 }

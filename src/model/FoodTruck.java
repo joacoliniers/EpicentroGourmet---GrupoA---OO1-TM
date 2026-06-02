@@ -55,6 +55,9 @@ public class FoodTruck extends UnidadDeVenta {
 
 	@Override
 	public String toString() {
-		return "FoodTruck [patente=" + patente + ", conexionElectrica=" + conexionElectrica + "]";
+		return super.getNombre() + " " + super.getCodigoUnico() + " responsable=" + super.getResponsable().getDni()
+				+ " superficie=" + super.getSuperficie() + " Tipo=FoodTruck [patente=" + patente
+				+ ", conexionElectrica=" + conexionElectrica + "]";
 	}
+
 }
