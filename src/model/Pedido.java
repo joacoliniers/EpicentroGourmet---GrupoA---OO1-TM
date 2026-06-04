@@ -71,4 +71,13 @@ public class Pedido {
 		DetallePedido nuevoDetalle = new DetallePedido(idItem, plato, cantidad);
 		return this.lstDetallePedido.add(nuevoDetalle);
 	}
+	
+	public double calcularTotalPedido() {
+		double total = 0.0;
+		for(DetallePedido d : this.lstDetallePedido) {
+			total += d.getCantidad() * d.getPlato().getPrecio();
+		}
+		
+		return total;
+	}
 }

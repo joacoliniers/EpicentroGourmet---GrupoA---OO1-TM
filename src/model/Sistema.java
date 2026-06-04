@@ -325,5 +325,32 @@ public class Sistema {
 		
 		return bandera;
 	}
+	
+	public List<ReporteVenta> reporteRecaudacion(int idFestival){
+		List<ReporteVenta> lstReporte = new ArrayList<ReporteVenta>();
+		Festival festival = this.busqPorAtributoUnicoFestival(idFestival);
+		
+		if(festival != null) {
+			for(UnidadDeVenta u : this.getLstUnidades()) {
+				double totalRecaudacion = u.recaudacionTotal();
+				
+				ReporteVenta reporte = new ReporteVenta(u, totalRecaudacion);
+				lstReporte.add(reporte);
+			}
+		}
+		return lstReporte;
+	}
+	
+	public List<Personal> filtroPersonal(LocalDate fechaInicio, LocalDate fechaFin){
+		List<Personal> lstPersonalFiltrada = new ArrayList<Personal>();
+		for(Personal p : this.lstPersonal) {
+			LocalDate fechaIngreso = p.getFechaIngreso();
+			if(fechaIngreso.isAfter(fechaInicio) && fechaIngreso.isBefore(fechaFin)){
+				lstPersonalFiltrada.add(p);
+			}
+		}
+		
+		return lstPersonalFiltrada;
+	}
 
 }

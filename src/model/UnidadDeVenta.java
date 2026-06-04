@@ -148,4 +148,13 @@ public abstract class UnidadDeVenta {
 		
 		return pedido;
 	}
+	
+	public double recaudacionTotal() {
+		double total = 0.0;
+		for(Pedido p : this.lstPedidos) {
+			total += p.calcularTotalPedido();
+		}
+		
+		return total;
+	}
 }

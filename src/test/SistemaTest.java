@@ -71,6 +71,10 @@ public class SistemaTest {
 		for(Pedido p : sistema.busqPorAtributoUnicoUnidad(1001).getLstPedidos()) {
 			System.out.println(p);
 		}
+		
+		System.out.println(sistema.reporteRecaudacion(1));
+		
+		System.out.println(sistema.filtroPersonal(LocalDate.of(2019, 1, 12), LocalDate.of(2022, 1, 1)));
 	}
 
 }
