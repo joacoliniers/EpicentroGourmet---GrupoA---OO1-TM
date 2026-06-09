@@ -59,7 +59,9 @@ public class SistemaTest {
 		System.out.println("");
 		sistema.busqPorAtributoUnicoUnidad(1001).agregarPlatoDelMenu("Hamburguesa Completa", 12000.0, 5500.0);
 		sistema.busqPorAtributoUnicoUnidad(1001).agregarPlatoDelMenu("Super Pancho", 12000.0, 5500.0);
-		
+		sistema.busqPorAtributoUnicoUnidad(1002L).agregarPlatoDelMenu("Gaseosa", 3000.0, 1000.0);
+		sistema.busqPorAtributoUnicoUnidad(1003L).agregarPlatoDelMenu("Papas Fritas", 6000.0, 2500.0);
+		sistema.busqPorAtributoUnicoUnidad(1004L).agregarPlatoDelMenu("Choripan", 8000.0, 3500.0);
 		
 		sistema.abrirPedido(1, 1001);
 		sistema.agregarItemAPedido(1, 1001, 1L, "HambUrguesa CoMPleta", 2);
@@ -67,12 +69,24 @@ public class SistemaTest {
 		
 		sistema.abrirPedido(1, 1001);
 		sistema.agregarItemAPedido(1, 1001, 2L, "super pancho", 5);
+		
+		sistema.abrirPedido(1, 1002L);
+		sistema.agregarItemAPedido(1, 1002L, 1L, "gaseosa", 2);
+	
+		sistema.abrirPedido(1, 1003L);
+		sistema.agregarItemAPedido(1, 1003L, 1L, "papas fritas", 4);
+
+		sistema.abrirPedido(1, 1004L);
+		sistema.agregarItemAPedido(1, 1004L, 1L, "choripan", 1);
 
 		for(Pedido p : sistema.busqPorAtributoUnicoUnidad(1001).getLstPedidos()) {
 			System.out.println(p);
 		}
 		
 		System.out.println(sistema.reporteRecaudacion(1));
+		for (UnidadDeVenta u : sistema.rankingUnidades()) {
+			System.out.println("	" + u);
+		}
 		
 		System.out.println(sistema.filtroPersonal(LocalDate.of(2019, 1, 12), LocalDate.of(2022, 1, 1)));
 	}

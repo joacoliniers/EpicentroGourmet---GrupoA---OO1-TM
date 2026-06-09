@@ -318,39 +318,56 @@ public class Sistema {
 
 		Pedido pedidoExistente = unidad.traerPedido(codPedido);
 		PlatosDelMenu platoPedido = unidad.traerPlato(nombrePlato);
-		
-		if(pedidoExistente != null || platoPedido != null) {
+
+		if (pedidoExistente != null || platoPedido != null) {
 			bandera = pedidoExistente.agregarDetallePedido(platoPedido, cantidad);
-		} 
-		
+		}
+
 		return bandera;
 	}
-	
-	public List<ReporteVenta> reporteRecaudacion(int idFestival){
+
+	public List<ReporteVenta> reporteRecaudacion(int idFestival) {
 		List<ReporteVenta> lstReporte = new ArrayList<ReporteVenta>();
 		Festival festival = this.busqPorAtributoUnicoFestival(idFestival);
-		
-		if(festival != null) {
-			for(UnidadDeVenta u : this.getLstUnidades()) {
+
+		if (festival != null) {
+			for (UnidadDeVenta u : this.getLstUnidades()) {
 				double totalRecaudacion = u.recaudacionTotal();
-				
+
 				ReporteVenta reporte = new ReporteVenta(u, totalRecaudacion);
 				lstReporte.add(reporte);
 			}
 		}
 		return lstReporte;
 	}
-	
-	public List<Personal> filtroPersonal(LocalDate fechaInicio, LocalDate fechaFin){
+
+	public List<Personal> filtroPersonal(LocalDate fechaInicio, LocalDate fechaFin) {
 		List<Personal> lstPersonalFiltrada = new ArrayList<Personal>();
-		for(Personal p : this.lstPersonal) {
+		for (Personal p : this.lstPersonal) {
 			LocalDate fechaIngreso = p.getFechaIngreso();
-			if(fechaIngreso.isAfter(fechaInicio) && fechaIngreso.isBefore(fechaFin)){
+			if (fechaIngreso.isAfter(fechaInicio) && fechaIngreso.isBefore(fechaFin)) {
 				lstPersonalFiltrada.add(p);
 			}
 		}
-		
+
 		return lstPersonalFiltrada;
+	}
+
+	public List<UnidadDeVenta> rankingUnidades() {
+		List<UnidadDeVenta> listaRanking = new ArrayList<>(this.getLstUnidades());
+		int n = listaRanking.size();
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n - 1; j++) {
+				UnidadDeVenta u1 = listaRanking.get(j);
+				UnidadDeVenta u2 = listaRanking.get(j + 1);
+
+				if (u1.recaudacionTotal() < u2.recaudacionTotal()) {
+					listaRanking.set(j, u2);
+					listaRanking.set(j + 1, u1);
+				}
+			}
+		}
+		return listaRanking;
 	}
 
 }
