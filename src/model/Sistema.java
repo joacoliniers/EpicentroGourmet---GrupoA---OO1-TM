@@ -331,7 +331,7 @@ public class Sistema {
 		Festival festival = this.busqPorAtributoUnicoFestival(idFestival);
 
 		if (festival != null) {
-			for (UnidadDeVenta u : this.getLstUnidades()) {
+			for (UnidadDeVenta u : festival.getLstUnidadDeVentas()) {
 				double totalRecaudacion = u.recaudacionTotal();
 
 				ReporteVenta reporte = new ReporteVenta(u, totalRecaudacion);
