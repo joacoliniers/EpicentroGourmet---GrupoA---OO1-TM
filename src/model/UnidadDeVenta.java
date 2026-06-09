@@ -157,6 +157,15 @@ public abstract class UnidadDeVenta {
 		
 		return total;
 	}
+	
+	public double costoTotal() {
+		double costo = 0.0;
+		for(Pedido p : this.lstPedidos) {
+			costo += p.calcularCostoPedido();
+		}
+		
+		return costo;
+	}
 
 	public int contarPedidosDelPlato(PlatosDelMenu plato, int idFestival) {
 		int contador = 0;
@@ -176,5 +185,22 @@ public abstract class UnidadDeVenta {
 			}
 		}
 		return encontrado;
+	}
+	
+	public double calculoGananciaUnidad() {
+		
+		return this.recaudacionTotal() - this.costoTotal();
+	}
+	
+	public double calculoSueldos() {
+		
+		double total = 0.0;
+		
+		for(Personal p : this.lstPersonal) {
+			
+			total += p.liquidacionHaberes();
+		}
+		
+		return total;
 	}
 }

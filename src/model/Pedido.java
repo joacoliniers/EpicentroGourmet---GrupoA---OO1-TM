@@ -84,4 +84,13 @@ public class Pedido {
 		
 		return total;
 	}
+	
+	public double calcularCostoPedido() {
+		double costo = 0.0;
+		for(DetallePedido d : this.lstDetallePedido) {
+			costo += d.getCantidad() * d.getPlato().getCostoProduccion();
+		}
+		
+		return costo;
+	}
 }

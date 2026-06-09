@@ -381,5 +381,4 @@ public class Sistema {
 
 		return platoEstrella;
 	}
-
 }
