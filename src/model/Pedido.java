@@ -93,4 +93,9 @@ public class Pedido {
 		
 		return costo;
 	}
+	
+	public boolean estaEnRangoDeFechas(LocalDate fechaDesde, LocalDate fechaHasta) {
+	    return !this.fechaTransacccion.isBefore(fechaDesde) && !this.fechaTransacccion.isAfter(fechaHasta);
+	}
+	
 }

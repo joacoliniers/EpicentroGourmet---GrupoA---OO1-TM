@@ -142,5 +142,16 @@ public class Festival {
 		
 		return ganancia - (canon + sueldos);
 	}
+	
+	public double calculoRentabilidadNeta(long codigoUnico, LocalDate fechaDesde, LocalDate fechaHasta) throws Exception {
+		
+		UnidadDeVenta u = this.busqUnidadDeVentaPorId(codigoUnico);
+		
+		double ganancia = u.calculoGananciaUnidad(fechaDesde, fechaHasta);
+		double canon = this.calculoCanon(u);
+		double sueldos = u.calculoSueldos();
+
+		return ganancia - (canon + sueldos);
+	}
 
 }

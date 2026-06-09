@@ -101,69 +101,89 @@ public abstract class UnidadDeVenta {
 				&& Objects.equals(nombre, other.nombre) && Objects.equals(responsable, other.responsable)
 				&& Double.doubleToLongBits(superficie) == Double.doubleToLongBits(other.superficie);
 	}
-	
+
 	public Pedido agregarPedido(LocalDate fecha, Festival festival) {
 		long codPedido = 1;
 
 		if (!this.lstPedidos.isEmpty()) {
 			codPedido = this.lstPedidos.getLast().getCodigoPedido() + 1;
 		}
-		
+
 		Pedido nuevoPedido = new Pedido(fecha, festival, this, codPedido);
 		this.lstPedidos.add(nuevoPedido);
 		return nuevoPedido;
 	}
-	
+
 	public PlatosDelMenu traerPlato(String nombre) {
-		
+
 		PlatosDelMenu plato = null;
-		for(PlatosDelMenu p : this.lstPlatos) {
-			if(p.getNombre().equalsIgnoreCase(nombre)) {
+		for (PlatosDelMenu p : this.lstPlatos) {
+			if (p.getNombre().equalsIgnoreCase(nombre)) {
 				plato = p;
 			}
 		}
-		
+
 		return plato;
 	}
-	
+
 	public boolean agregarPlatoDelMenu(String nombre, Double precio, Double costoProduccion) {
 		boolean bandera = false;
-		
-		if(this.traerPlato(nombre) == null) {
+
+		if (this.traerPlato(nombre) == null) {
 			PlatosDelMenu nuevoPlato = new PlatosDelMenu(nombre, precio, costoProduccion);
 			bandera = this.lstPlatos.add(nuevoPlato);
-			
+
 		}
-		
+
 		return bandera;
 	}
-	
+
 	public Pedido traerPedido(long codPedido) {
 		Pedido pedido = null;
-		for(Pedido p : this.lstPedidos) {
-			if(p.getCodigoPedido() == codPedido) {
+		for (Pedido p : this.lstPedidos) {
+			if (p.getCodigoPedido() == codPedido) {
 				pedido = p;
 			}
 		}
-		
+
 		return pedido;
 	}
-	
+
 	public double recaudacionTotal() {
 		double total = 0.0;
-		for(Pedido p : this.lstPedidos) {
+		for (Pedido p : this.lstPedidos) {
 			total += p.calcularTotalPedido();
 		}
-		
+
 		return total;
 	}
-	
+
+	public double recaudacionTotal(LocalDate fechaDesde, LocalDate fechaHasta) {
+		double total = 0.0;
+		for (Pedido p : this.lstPedidos) {
+			if (p.estaEnRangoDeFechas(fechaDesde, fechaHasta)) {
+				total += p.calcularTotalPedido();
+			}
+		}
+		return total;
+	}
+
 	public double costoTotal() {
 		double costo = 0.0;
-		for(Pedido p : this.lstPedidos) {
+		for (Pedido p : this.lstPedidos) {
 			costo += p.calcularCostoPedido();
 		}
-		
+
+		return costo;
+	}
+
+	public double costoTotal(LocalDate fechaDesde, LocalDate fechaHasta) {
+		double costo = 0.0;
+		for (Pedido p : this.lstPedidos) {
+			if (p.estaEnRangoDeFechas(fechaDesde, fechaHasta)) {
+				costo += p.calcularCostoPedido();
+			}
+		}
 		return costo;
 	}
 
@@ -186,21 +206,26 @@ public abstract class UnidadDeVenta {
 		}
 		return encontrado;
 	}
-	
+
 	public double calculoGananciaUnidad() {
-		
+
 		return this.recaudacionTotal() - this.costoTotal();
 	}
-	
+
+	public double calculoGananciaUnidad(LocalDate fechaDesde, LocalDate fechaHasta) {
+
+		return this.recaudacionTotal(fechaDesde, fechaHasta) - this.costoTotal(fechaDesde, fechaHasta);
+	}
+
 	public double calculoSueldos() {
-		
+
 		double total = 0.0;
-		
-		for(Personal p : this.lstPersonal) {
-			
+
+		for (Personal p : this.lstPersonal) {
+
 			total += p.liquidacionHaberes();
 		}
-		
+
 		return total;
 	}
 }
