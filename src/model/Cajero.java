@@ -24,4 +24,9 @@ public class Cajero extends Personal {
 	public String toString() {
 		return "Cajero [turno=" + turno + "]";
 	}
+	
+	public double liquidacionHaberes() {
+		
+		return this.getSueldoBase() + (this.calculoAnosAntiguedad() * 5000);
+	}
 }

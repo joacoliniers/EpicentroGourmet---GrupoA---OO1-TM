@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Objects;
 
 public abstract class Personal {
@@ -86,5 +87,15 @@ public abstract class Personal {
 	public String toString() {
 		return "Personal [nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", fechaNacimiento="
 				+ fechaNacimiento + ", fechaIngreso=" + fechaIngreso + ", sueldoBase=" + sueldoBase + "]";
+	}
+	
+	abstract double liquidacionHaberes();
+	
+	public int calculoAnosAntiguedad() {
+	    
+	    LocalDate hoy = LocalDate.now();
+	    LocalDate ingreso = this.getFechaIngreso();
+	    
+	    return Period.between(ingreso, hoy).getYears();
 	}
 }

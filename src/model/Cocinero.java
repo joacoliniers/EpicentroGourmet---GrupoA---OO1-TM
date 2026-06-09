@@ -33,4 +33,9 @@ public class Cocinero extends Personal {
 	public String toString() {
 		return "Cajero [especialidad=" + especialidad + ", plusFijo=" + plusFijo + "]";
 	}
+	
+	public double liquidacionHaberes() {
+		
+		return this.getSueldoBase() + this.plusFijo;
+	}
 }
