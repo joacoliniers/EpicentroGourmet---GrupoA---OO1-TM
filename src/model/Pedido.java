@@ -54,6 +54,10 @@ public class Pedido {
 		this.codigoPedido = codigoPedido;
 	}
 
+	public List<DetallePedido> getLstDetallePedido() {
+    return lstDetallePedido;
+}
+
 	@Override
 	public String toString() {
 		return "Pedido codigoPedido=" + codigoPedido + " [fechaTransacccion=" + fechaTransacccion + ", festival="

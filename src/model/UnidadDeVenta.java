@@ -157,4 +157,24 @@ public abstract class UnidadDeVenta {
 		
 		return total;
 	}
+
+	public int contarPedidosDelPlato(PlatosDelMenu plato, int idFestival) {
+		int contador = 0;
+		for (Pedido pedido : this.lstPedidos) {
+			if (pedido.getFestival().getIdFestival() == idFestival && platoEstaEnPedido(plato, pedido)) {
+				contador++;
+			}
+		}
+		return contador;
+	}
+
+	private boolean platoEstaEnPedido(PlatosDelMenu plato, Pedido pedido) {
+		boolean encontrado = false;
+		for (DetallePedido detalle : pedido.getLstDetallePedido()) {
+			if (detalle.getPlato().getNombre().equalsIgnoreCase(plato.getNombre())) {
+				encontrado = true;
+			}
+		}
+		return encontrado;
+	}
 }

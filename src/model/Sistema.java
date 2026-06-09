@@ -370,4 +370,16 @@ public class Sistema {
 		return listaRanking;
 	}
 
+	public PlatosDelMenu platoEstrella(long codigoUnicoUnidad, int idFestival) {
+		PlatosDelMenu platoEstrella = null;
+		UnidadDeVenta unidad = this.busqPorAtributoUnicoUnidad(codigoUnicoUnidad);
+		Festival festival = this.busqPorAtributoUnicoFestival(idFestival);
+
+		if (unidad != null && festival != null) {
+			platoEstrella = festival.platoEstrella(unidad);
+		}
+
+		return platoEstrella;
+	}
+
 }

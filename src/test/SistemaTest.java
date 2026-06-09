@@ -89,6 +89,21 @@ public class SistemaTest {
 		}
 		
 		System.out.println(sistema.filtroPersonal(LocalDate.of(2019, 1, 12), LocalDate.of(2022, 1, 1)));
+
+		// test platoEstrella
+		System.out.println("\n--- Test Plato Estrella ---");
+
+		model.PlatosDelMenu estrella = sistema.platoEstrella(1001L, 1);
+		System.out.println("Plato estrella de unidad 1001: " + estrella);
+
+		model.PlatosDelMenu estrellaVacia = sistema.platoEstrella(1002L, 1);
+		System.out.println("Plato estrella de unidad 1002 (un solo pedido): " + estrellaVacia); 
+
+		model.PlatosDelMenu estrellaNull = sistema.platoEstrella(9999L, 1);
+		System.out.println("Plato estrella de unidad inexistente: " + estrellaNull); 
+
+		model.PlatosDelMenu estrellaFestivalNull = sistema.platoEstrella(1001L, 99);
+		System.out.println("Plato estrella con festival inexistente: " + estrellaFestivalNull); 
 	}
 
 }

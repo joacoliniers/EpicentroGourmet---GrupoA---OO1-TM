@@ -115,4 +115,21 @@ public class Festival {
 		return unidadBuscada;
 	}
 
+	public PlatosDelMenu platoEstrella(UnidadDeVenta unidad) {
+		PlatosDelMenu platoEstrella = null;
+		int maxContador = 0;
+
+		if (unidad != null) {
+			for (PlatosDelMenu plato : unidad.getLstPlatos()) {
+				int contador = unidad.contarPedidosDelPlato(plato, this.idFestival);
+				if (contador > maxContador) {
+					maxContador = contador;
+					platoEstrella = plato;
+				}
+			}
+		}
+
+		return platoEstrella;
+	}
+
 }
