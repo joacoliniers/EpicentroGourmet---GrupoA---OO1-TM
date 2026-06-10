@@ -91,11 +91,11 @@ public abstract class Personal {
 	
 	abstract double liquidacionHaberes();
 	
-	public int calculoAnosAntiguedad() {
+	public Period calcularAntiguedad() {
 	    
 	    LocalDate hoy = LocalDate.now();
 	    LocalDate ingreso = this.getFechaIngreso();
 	    
-	    return Period.between(ingreso, hoy).getYears();
+	    return Period.between(ingreso, hoy); 
 	}
 }

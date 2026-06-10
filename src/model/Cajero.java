@@ -27,6 +27,6 @@ public class Cajero extends Personal {
 	
 	public double liquidacionHaberes() {
 		
-		return this.getSueldoBase() + (this.calculoAnosAntiguedad() * 5000);
+		return this.getSueldoBase() + (this.calcularAntiguedad().getYears() * 5000);
 	}
 }
