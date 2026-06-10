@@ -32,11 +32,11 @@ public class SistemaTest {
 		for (UnidadDeVenta u : sistema.getLstUnidades()) {
 			System.out.println("	" + u);
 		}
-		/* REVISAR PORQUE NO IMPRIME AL PERSONAL CORRECTAMENTE
-		 * System.out.println("Personal agregado:");
+		
+		System.out.println("Personal agregado:");
 		for (Personal p : sistema.getLstPersonal()) {
 			System.out.println("	" + p);
-		}*/
+		}
 		System.out.println("Festivales agregados:");
 		for (Festival f : sistema.getLstFestival()) {
 			System.out.println("	" + f);
@@ -44,9 +44,9 @@ public class SistemaTest {
 		System.out.println("\n2. Búsqueda por Atributo Único.\n");
 		System.out.println("Busco el festival con id 1:");
 		System.out.println(sistema.busqPorAtributoUnicoFestival(1));
-		/* REVISAR PORQUE NO IMPRIME AL PERSONAL CORRECTAMENTE
-		 * System.out.println("\nBusco al personal con dni 12345678L:");
-		System.out.println(sistema.busqPorAtributoUnicoPersonal(12345678L));*/
+		
+		System.out.println("\nBusco al personal con dni 12345678L:");
+		System.out.println(sistema.busqPorAtributoUnicoPersonal(12345678L));
 		System.out.println("\nBusco a la Unidad con codigo 1001L:");
 		System.out.println(sistema.busqPorAtributoUnicoUnidad(1001L));
 

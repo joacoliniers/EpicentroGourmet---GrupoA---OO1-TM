@@ -31,7 +31,7 @@ public class Cocinero extends Personal {
 
 	@Override
 	public String toString() {
-		return "Cajero [especialidad=" + especialidad + ", plusFijo=" + plusFijo + "]";
+	    return super.toString() + " - Cocinero [especialidad=" + especialidad + ", plusFijo=" + plusFijo + "]";
 	}
 	
 	public double liquidacionHaberes() {

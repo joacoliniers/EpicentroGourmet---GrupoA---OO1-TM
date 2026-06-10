@@ -22,7 +22,7 @@ public class Cajero extends Personal {
 
 	@Override
 	public String toString() {
-		return "Cajero [turno=" + turno + "]";
+	    return super.toString() + " - Cajero [turno=" + turno + "]";
 	}
 	
 	public double liquidacionHaberes() {
