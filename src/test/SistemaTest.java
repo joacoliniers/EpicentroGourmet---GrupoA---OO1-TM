@@ -50,6 +50,14 @@ public class SistemaTest {
 		System.out.println(sistema.busqPorAtributoUnicoPersonal(12345678L));
 		System.out.println("\nBusco a la Unidad con codigo 1001L:");
 		System.out.println(sistema.busqPorAtributoUnicoUnidad(1001L));
+		
+		System.out.println("\n3. Calculo Canon Unidad 1001L");
+		try {
+			System.out.println(sistema.busqPorAtributoUnicoFestival(1).calculoCanon(sistema.busqPorAtributoUnicoUnidad(1001L)));
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
 
 		Festival festival = sistema.getLstFestival().get(0);
 		festival.getLstUnidadDeVentas().add(sistema.busqPorAtributoUnicoUnidad(1001L));

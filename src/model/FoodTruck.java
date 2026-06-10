@@ -69,6 +69,6 @@ public class FoodTruck extends UnidadDeVenta {
 	        costoConexion = costosFestival.getPlusElectricidad();
 	    }
 	    
-	    return (this.getSuperficie() * costosFestival.getCostoMontaje()) + costoConexion;
+	    return (this.getSuperficie() * costosFestival.getCostoSuperficie()) + costoConexion;
 	}
 }
