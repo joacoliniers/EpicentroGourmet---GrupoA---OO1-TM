@@ -218,14 +218,16 @@ public abstract class UnidadDeVenta {
 	}
 
 	public double calculoSueldos() {
+	    double total = 0.0;
 
-		double total = 0.0;
+	    for (Personal p : this.lstPersonal) {
+	        total += p.liquidacionHaberes();
+	    }
+	    
+	    if (this.responsable != null) {
+	        total += this.responsable.liquidacionHaberes();
+	    }
 
-		for (Personal p : this.lstPersonal) {
-
-			total += p.liquidacionHaberes();
-		}
-
-		return total;
+	    return total;
 	}
 }
