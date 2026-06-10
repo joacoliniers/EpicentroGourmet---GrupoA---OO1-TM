@@ -222,4 +222,6 @@ public abstract class UnidadDeVenta {
 
 	    return total;
 	}
+	
+	public abstract double calcularCanon(Costo costosFestival);
 }

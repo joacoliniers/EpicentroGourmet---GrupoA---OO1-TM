@@ -80,27 +80,13 @@ public class Festival {
 	}
 	
 	
-	public Double calculoCanon(UnidadDeVenta u) throws Exception{
-		
-		if(u == null) {
-			throw new Exception("ERROR: Unidad de venta no encontrada");
-		}
-		
-		double canon = 0;
-		if(u instanceof FoodTruck) {
-			FoodTruck f = (FoodTruck) u;
-			double costoConexion = 0;
-			
-			if(f.isConexionElectrica()) {
-				costoConexion = this.costosFestival.getPlusElectricidad();
-			}
-			canon = (u.getSuperficie() * this.costosFestival.getCostoMontaje() + costoConexion);
-					
-		} else {
-			PuestoDesarmable p = (PuestoDesarmable) u;
-			canon = (u.getSuperficie() * this.costosFestival.getCostoSuperficie()) - (p.getTiempoMontaje() * this.costosFestival.getCostoMontaje());
-		}
-		return canon;
+	public Double calculoCanon(UnidadDeVenta u) throws Exception {
+	    
+	    if (u == null) {
+	        throw new Exception("ERROR: Unidad de venta no encontrada");
+	    }
+	    
+	    return u.calcularCanon(this.costosFestival);
 	}
 	
 	public UnidadDeVenta busqUnidadDeVentaPorId(long codigoUnicoUnidad) {

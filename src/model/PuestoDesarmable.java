@@ -58,5 +58,11 @@ public class PuestoDesarmable extends UnidadDeVenta {
 				+ " superficie=" + super.getSuperficie() + " Tipo=Puesto Desarmable [cantCarpas=" + cantCarpas
 				+ ", tiempoMontaje=" + tiempoMontaje + "]";
 	}
+	
+	@Override
+	public double calcularCanon(Costo costosFestival) {
+	    
+	    return (this.getSuperficie() * costosFestival.getCostoSuperficie()) - (this.tiempoMontaje * costosFestival.getCostoMontaje());
+	}
 
 }

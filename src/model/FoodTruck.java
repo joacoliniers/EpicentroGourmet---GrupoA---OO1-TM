@@ -59,5 +59,16 @@ public class FoodTruck extends UnidadDeVenta {
 				+ " superficie=" + super.getSuperficie() + " Tipo=FoodTruck [patente=" + patente
 				+ ", conexionElectrica=" + conexionElectrica + "]";
 	}
-
+	
+	@Override
+	public double calcularCanon(Costo costosFestival) {
+	    
+	    double costoConexion = 0;
+	    
+	    if (this.conexionElectrica) { 
+	        costoConexion = costosFestival.getPlusElectricidad();
+	    }
+	    
+	    return (this.getSuperficie() * costosFestival.getCostoMontaje()) + costoConexion;
+	}
 }
