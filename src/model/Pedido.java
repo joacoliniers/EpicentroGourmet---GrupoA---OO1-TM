@@ -98,4 +98,20 @@ public class Pedido {
 	    return !this.fechaTransacccion.isBefore(fechaDesde) && !this.fechaTransacccion.isAfter(fechaHasta);
 	}
 	
+	public int obtenerCantidadDePlato(PlatosDelMenu platoBuscado) {
+	    
+	    int cantidadVendida = 0;
+	    
+	    for (DetallePedido detalle : this.lstDetallePedido) {
+	        
+	        if (detalle.getPlato().getNombre().equalsIgnoreCase(platoBuscado.getNombre())) {
+	            
+	            cantidadVendida = detalle.getCantidad();
+	            
+	        }
+	    }
+	    
+	    return cantidadVendida;
+	}
+	
 }
