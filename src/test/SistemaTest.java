@@ -7,6 +7,7 @@ import model.Costo;
 import model.Festival;
 import model.Pedido;
 import model.Personal;
+import model.PlatosDelMenu;
 import model.ReporteMayoresCanon;
 import model.Sistema;
 import model.UnidadDeVenta;
@@ -112,16 +113,16 @@ public class SistemaTest {
 		// test platoEstrella
 		System.out.println("\n--- Test Plato Estrella ---");
 
-		model.PlatosDelMenu estrella = sistema.platoEstrella(1001L, 1);
+		PlatosDelMenu estrella = sistema.platoEstrella(1001L, 1);
 		System.out.println("Plato estrella de unidad 1001: " + estrella);
 
-		model.PlatosDelMenu estrellaVacia = sistema.platoEstrella(1002L, 1);
+		PlatosDelMenu estrellaVacia = sistema.platoEstrella(1002L, 1);
 		System.out.println("Plato estrella de unidad 1002 (un solo pedido): " + estrellaVacia);
 
-		model.PlatosDelMenu estrellaNull = sistema.platoEstrella(9999L, 1);
+		PlatosDelMenu estrellaNull = sistema.platoEstrella(9999L, 1);
 		System.out.println("Plato estrella de unidad inexistente: " + estrellaNull);
 
-		model.PlatosDelMenu estrellaFestivalNull = sistema.platoEstrella(1001L, 99);
+		PlatosDelMenu estrellaFestivalNull = sistema.platoEstrella(1001L, 99);
 		System.out.println("Plato estrella con festival inexistente: " + estrellaFestivalNull);
 	}
 
